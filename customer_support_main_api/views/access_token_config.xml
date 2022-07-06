@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+   <record id="view_customer_support_main_api_token_form" model="ir.ui.view">
+            <field name="name">customer.support.main.api.token.form</field>
+            <field name="model">company.token.setup</field>
+            <field name="arch" type="xml">
+                <form string="Company Token Setup Form">
+                     
+                    <sheet string="Company Token Setup">
+                        <group>
+                          <group>
+                            <field name="url_endpoint" />
+                            <field name="access_token"/>
+                          </group>
+                         
+                          <button name="generate_access_token_client" type="object" string="Submit" class="oe_highlight"/>
+                                              
+
+                       </group>
+                    </sheet>
+               
+                </form>
+            </field>
+    </record>
+
+
+        <record id="view_menu_company_token_setup_tree" model="ir.ui.view">
+            <field name="name">menu.company.token.setup.tree</field>
+            <field name="model">company.token.setup</field>
+            <field name="arch" type="xml">
+                <tree string="Company Token Setup Tree">
+                     <field name="url_endpoint"/>
+  		            <field name="access_token"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_menu_company_token_setup" model="ir.actions.act_window">
+            <field name="name">Company Token Action</field>
+            <field name="res_model">company.token.setup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+             <p class="o_view_nocontent_smiling_face">
+               Add a Token
+             </p><p>
+               With just a quick and easy tool you can add companies token.
+             </p>
+            </field>
+        </record>
+    <menuitem id="menu_company_token_setup_root" name="Configuration"
+            />
+     <menuitem id="menu_company_token_setup" name="Token"
+            parent="menu_customer_support_main_api_root" action="action_menu_company_token_setup"/>
+ 
+  </data>
+</odoo>
