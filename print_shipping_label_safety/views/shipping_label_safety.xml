@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="view_print_shipping_label_safety_label_printed_inherit" model="ir.ui.view">
+        <field name="name">Label Printed Option</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+           <field name="scheduled_date" position="after">
+                <field name="is_label_printed"/>
+           </field>
+        </field>
+    </record> 
+    <record id="view_print_shipping_label_safety_grey_out_inherit" model="ir.ui.view">
+        <field name="name">Validate Button Grey Out</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//button[@name='action_done']" position="replace"> 
+            <button name="action_done" string="Validate" type="object" class="oe_highlight"
+                        attrs="{'invisible': [
+                            '|','|',
+                                ('state', '!=', 'in_progress'),
+                                ('show_check_availability', '=', True),('is_label_printed', '=', False)]}"/> 
+            <button name="action_done" string="Validate" type="object" class="oe_grey"
+                        attrs="{'invisible': [
+                            '|','|',
+                                ('state', '!=', 'in_progress'),
+                                ('show_check_availability', '=', True),
+                                ('is_label_printed', '=', True)
+                                ]}"/> 
+
+        </xpath>
+        </field>
+    </record>   
+     
+</odoo>
