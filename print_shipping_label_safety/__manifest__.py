@@ -4,7 +4,7 @@
     "summary": """
         Batch validate button is grey out to prioritize to 
         print out shipping label button first """,
-    "author": "Manoj Khadka",
+    "author": "Manoj Khadkaa",
     "category": "Stock",
     "version": "14.0.1.0.0",
     "depends": ["plantura_logistics_management"],
